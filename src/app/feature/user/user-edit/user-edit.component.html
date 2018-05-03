@@ -48,10 +48,10 @@
 	<div class="form-group row">
 		<label class='col-form-label col-sm-2' for="userActive">Active:</label>
 		<input [(ngModel)]='user.Active' name = 'Active' type="checkbox" class="form-control col-sm-6" id="userActive" aria-describedby="activeHelp" placeholder="Active">
-		<small id="activeHelp" class="form-text text-muted col-sm-2">User is Active</small>
+		<small id="activeHelp" class="form-text text-muted col-sm-2">{{ user.Active ? "User is Active" : "User inactive" }}</small>
 	</div>
 	<div class='form-group'>
-		<button (click)='create()' class='btn btn-primary'>Create</button>
+		<button (click)='change()' class='btn btn-primary'>Update</button>
 	</div>
 </div>
 </div>

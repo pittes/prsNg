@@ -12,7 +12,7 @@ export class User {
 
 	constructor(inId: number = 0, uName: string = '', pwd: string = '', fName: string = '',
 				lName: string = '', phoneNbr: string = '', email: string = '', rvw: boolean = false,
-				adm: boolean = false, act: boolean = false) {
+				adm: boolean = false, act: boolean = true) {
 		this.Id = inId;
 		this.UserName = uName;
 		this.Password = pwd;
