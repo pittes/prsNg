@@ -14,6 +14,10 @@ import { ProductListComponent } from './feature/product/product-list/product-lis
 import { ProductCreateComponent } from './feature/product/product-create/product-create.component';
 import { ProductDetailComponent } from './feature/product/product-detail/product-detail.component';
 import { ProductEditComponent } from './feature/product/product-edit/product-edit.component';
+import { PurchaseRequestListComponent } from './feature/purchaserequest/purchaserequest-list/purchaserequest-list.component';
+import { PurchaseRequestCreateComponent } from './feature/purchaserequest/purchaserequest-create/purchaserequest-create.component';
+import { PurchaseRequestEditComponent } from './feature/purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
+import { PurchaseRequestDetailComponent } from './feature/purchaserequest/purchaserequest-detail/purchaserequest-detail.component';
 import { HomeComponent } from './core/home/home.component';
 
 const routes: Routes = [
@@ -35,6 +39,11 @@ const routes: Routes = [
 	{path: 'product/detail/:id', component: ProductDetailComponent},
 	{path: 'product/remove/:id', component: ProductDetailComponent},
 	{path: 'product/edit/:id', component: ProductEditComponent},
+	{path: 'purchaserequest/list', component: PurchaseRequestListComponent},
+	{path: 'purchaserequest/create', component: PurchaseRequestCreateComponent},
+	{path: 'purchaserequest/detail/:id', component: PurchaseRequestDetailComponent},
+	{path: 'purchaserequest/remove/:id', component: PurchaseRequestDetailComponent},
+	{path: 'purchaserequest/edit/:id', component: PurchaseRequestEditComponent},
 	{path: 'home', component: HomeComponent},
 	{path: '**', component: HomeComponent}];
 

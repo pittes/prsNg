@@ -25,6 +25,12 @@ import { ProductListComponent } from './feature/product/product-list/product-lis
 import { ProductCreateComponent } from './feature/product/product-create/product-create.component';
 import { ProductDetailComponent } from './feature/product/product-detail/product-detail.component';
 import { ProductEditComponent } from './feature/product/product-edit/product-edit.component';
+import { PurchaseRequestService } from './service/purchaserequest.service';
+import { PurchaseRequestListComponent } from './feature/purchaserequest/purchaserequest-list/purchaserequest-list.component';
+import { PurchaseRequestCreateComponent } from './feature/purchaserequest/purchaserequest-create/purchaserequest-create.component';
+import { PurchaseRequestEditComponent } from './feature/purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
+import { PurchaseRequestDetailComponent } from './feature/purchaserequest/purchaserequest-detail/purchaserequest-detail.component';
+import { SystemService } from './service/system.service';
 
 
 
@@ -46,7 +52,11 @@ import { ProductEditComponent } from './feature/product/product-edit/product-edi
     ProductListComponent,
     ProductCreateComponent,
     ProductDetailComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    PurchaseRequestListComponent,
+    PurchaseRequestCreateComponent,
+    PurchaseRequestEditComponent,
+    PurchaseRequestDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +67,9 @@ import { ProductEditComponent } from './feature/product/product-edit/product-edi
   providers: [
     UserService,
     VendorService,
-    ProductService
+    ProductService,
+    PurchaseRequestService,
+    SystemService
   ],
   bootstrap: [AppComponent]
 })
