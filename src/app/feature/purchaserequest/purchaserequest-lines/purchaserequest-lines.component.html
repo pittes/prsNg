@@ -1,0 +1,29 @@
+<app-menu></app-menu>
+<div class="component-content">
+	<div class="lefthalf">
+		<span class="component-title">[{{ title }}]</span>
+		<span><a routerLink='/purchaserequest/list'>Back to list</a></span>
+	</div>	
+</div>
+<p *ngIf="!prLineItems">Loading...</p>
+<table class="table table-sm" *ngIf="prLineItems">
+	<tr>
+		<td>Id</td>
+		<td>PR ID</td>
+		<td>Product</td>
+		<td>Quantity</td>
+		<td>Action</td>
+	</tr>
+	<tr *ngFor="let prli of prLineItems">
+		<td>{{ prli.Id }}</td><td>{{ prli.PurchaseRequest.Id }}</td><td>{{ prli.Product.Name }}</td><td>{{ prli.Quantity }}</td>
+		<td class="actions">
+			<a routerLink='/purchaserequestlineitem/detail/{{prli.Id}}'>
+			<img src="assets/details.png" width="20" height="20" title="Detail"></a>
+			<a routerLink='/purchaserequestlineitem/edit/{{prli.Id}}'>
+			<img src="assets/pencil-icon.png" width="20" height="20" title="Edit"></a>
+			<!-- Need to fix this delete link -->
+			<a routerLink='/purchaserequestlineitem/lines/{{prli.Id}}'>
+			<img src='assets/delete-x.png' width='20' height='20' title='Remove'></a>
+		</td>
+	</tr>
+</table>

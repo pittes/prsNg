@@ -18,6 +18,9 @@ import { PurchaseRequestListComponent } from './feature/purchaserequest/purchase
 import { PurchaseRequestCreateComponent } from './feature/purchaserequest/purchaserequest-create/purchaserequest-create.component';
 import { PurchaseRequestEditComponent } from './feature/purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
 import { PurchaseRequestDetailComponent } from './feature/purchaserequest/purchaserequest-detail/purchaserequest-detail.component';
+import { PurchaseRequestLinesComponent } from './feature/purchaserequest/purchaserequest-lines/purchaserequest-lines.component';
+import { PurchaseRequestLineItemCreateComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-create/purchaserequestlineitem-create.component';
+import { PurchaseRequestLineItemEditComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-edit/purchaserequestlineitem-edit.component';
 import { HomeComponent } from './core/home/home.component';
 
 const routes: Routes = [
@@ -44,6 +47,9 @@ const routes: Routes = [
 	{path: 'purchaserequest/detail/:id', component: PurchaseRequestDetailComponent},
 	{path: 'purchaserequest/remove/:id', component: PurchaseRequestDetailComponent},
 	{path: 'purchaserequest/edit/:id', component: PurchaseRequestEditComponent},
+	{path: 'purchaserequest/lines/:id', component: PurchaseRequestLinesComponent},
+	{path: 'purchaserequestlineitem/create', component: PurchaseRequestLineItemCreateComponent},
+	{path: 'purchaserequestlineitem/edit/:id', component: PurchaseRequestLineItemEditComponent},
 	{path: 'home', component: HomeComponent},
 	{path: '**', component: HomeComponent}];
 

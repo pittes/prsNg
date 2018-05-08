@@ -1,3 +1,44 @@
-<p>
-  purchaserequest-detail works!
-</p>
+<app-menu></app-menu>
+<div class='component-content'>
+	<div class = ''>
+		<div class = 'lefthalf'>
+			<span class='component-title'>[{{title}}]</span>
+			<span><a routerLink='/purchaserequest/create'><img id='createnew' width='20' height='20' src='assets/add-icon.png' title='Add New'></a></span>
+		</div>
+	</div>
+  <table class="table table-sm" *ngIf='purchaseRequest'>
+    <tr>
+      <td>Id</td><td>{{ purchaseRequest.Id}}</td>
+    </tr>
+    <tr>
+      <td>User</td><td>{{ purchaseRequest.User.FirstName }} {{ purchaseRequest.User.LastName }}</td>
+    </tr>
+    <tr>
+      <td>Description</td><td>{{ purchaseRequest.Description }}</td>
+    </tr>
+    <tr>
+      <td>Justification</td><td>{{ purchaseRequest.Justification }}</td>
+    </tr>
+    <tr>
+      <td>Date Needed</td><td>{{ purchaseRequest.DateNeeded }}</td>
+    </tr>
+    <tr>
+      <td>Delivery Mode</td><td>{{ purchaseRequest.DeliveryMode }}</td>
+    </tr>
+    <tr>
+      <td>Total</td><td>{{ purchaseRequest.Total | currency }}</td>
+    </tr>
+    <tr>
+      <td>Status</td><td>{{ purchaseRequest.Status }}</td>
+    </tr>
+    <tr>
+      <td>Submitted Date</td><td>{{ purchaseRequest.SubmittedDate | date: 'yyyy-MM-dd' }}</td>
+    </tr>
+    <tr>
+	    <td colspan="2">
+	      <a routerLink='/purchaserequest/edit/{{purchaseRequest.Id}}' class='btn btn-primary' title='Edit'>Edit</a>
+	      <button (click)="remove()" class='btn btn-danger' title='Delete'>Remove</button>
+	    </td>
+    </tr>
+  </table>
+</div>

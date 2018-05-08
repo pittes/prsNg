@@ -20,7 +20,7 @@
       <td>Part Number</td><td>{{ product.VendorPartNumber }}</td>
     </tr>
     <tr>
-      <td>Price</td><td>${{ product.Price }}</td>
+      <td>Price</td><td>{{ product.Price | currency }}</td>
     </tr>
     <tr>
       <td>Unit</td><td>{{ product.Unit }}</td>

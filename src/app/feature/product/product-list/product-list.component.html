@@ -21,7 +21,7 @@
 		<td>Action</td>
 	</tr>
 	<tr *ngFor="let product of products">
-		<td>{{ product.Id }}</td><td>{{ product.Vendor.Name }}</td><td>{{ product.VendorPartNumber }}</td><td>{{ product.Name }}</td><td>${{ product.Price }}</td><td>{{ product.Unit }}</td><td>{{ product.PhotoPath }}</td>
+		<td>{{ product.Id }}</td><td>{{ product.Vendor.Name }}</td><td>{{ product.VendorPartNumber }}</td><td>{{ product.Name }}</td><td>{{ product.Price | currency }}</td><td>{{ product.Unit }}</td><td>{{ product.PhotoPath }}</td>
 		<td class="actions">
 			<a routerLink='/product/detail/{{product.Id}}'>
 			<img src="assets/details.png" width="20" height="20" title="Detail"></a>

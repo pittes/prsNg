@@ -12,9 +12,9 @@ export class PurchaseRequestService {
 		return this.http.get(url+"List") as Observable <PurchaseRequest[]>;
 	}
 
-	create(purchaserequest: PurchaseRequest): Observable <any> {
+	create(purchaseRequest: PurchaseRequest): Observable <any> {
 		console.log("purchaserequestsvc.create...");
-		return this.http.post(url+"Add", purchaserequest) as Observable <any>;
+		return this.http.post(url+"Add", purchaseRequest) as Observable <any>;
 	}
 
 	get(id): Observable <PurchaseRequest[]> {
@@ -25,8 +25,12 @@ export class PurchaseRequestService {
 		return this.http.get(url+"Remove?id="+id) as Observable <any>;
 	}
 
-	change(purchaserequest: PurchaseRequest): Observable <any> {
-		return this.http.post(url+"Change", purchaserequest) as Observable <any>;
+	change(purchaseRequest: PurchaseRequest): Observable <any> {
+		return this.http.post(url+"Change", purchaseRequest) as Observable <any>;
+	}
+
+	submitForReview(purchaseRequest: PurchaseRequest): Observable<any> {
+        return this.http.post(url+"SubmitForReview", purchaseRequest) as Observable<any>;
 	}
 
   constructor(private http: HttpClient) { }

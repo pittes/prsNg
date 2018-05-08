@@ -29,7 +29,7 @@ export class ProductDetailComponent implements OnInit {
   	this.productSvc.get(id)
   		.subscribe(products => {
   			this.product = products.length > 0 ? products[0] : null;
-  			console.log("User:", this.product);
+  			console.log("Product:", this.product);
   		});
   }
 
