@@ -11,17 +11,20 @@
 <p *ngIf="!users">Loading...</p>
 <table class="table table-sm" *ngIf="users">
 	<tr>
-		<td>Id</td>
-		<td>UserName</td>
-		<td>Password</td>
-		<td>FirstName</td>
-		<td>LastName</td>
-		<td>PhoneNumber</td>
-		<td>Email</td>
-		<td>Privilege</td>
-		<td>Action</td>
+		<th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+			(click)="setSortBy('Id')">Id</a></th>
+		<th class="btn-link"><a class="btn btn-link font-weight-bold"
+			(click)="setSortBy('UserName')">UserName</a></th>
+		<th>Password</th>
+		<th>FirstName</th>
+		<th class="table-secondary"><a class="btn btn-link font-weight-bold"
+			(click)="setSortBy('LastName')">LastName</a></th>
+		<th>PhoneNumber</th>
+		<th>Email</th>
+		<th>Privilege</th>
+		<th>Action</th>
 	</tr>
-	<tr *ngFor="let user of users">
+	<tr *ngFor="let user of users | sort:sortBy">
 		<td>{{ user.Id }}</td><td>{{ user.UserName }}</td><td>{{ user.Password }}</td><td>{{ user.FirstName }}</td><td>{{ user.LastName }}</td><td>{{ user.PhoneNumber }}</td><td>{{ user.Email }}</td><td>{{ user.Reviewer?"Rvw":"" }}   {{ user.Admin?"Adm":"" }}</td>
 		<td class="actions">
 			<a routerLink='/user/detail/{{user.Id}}'>

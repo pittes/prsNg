@@ -13,9 +13,10 @@ import { SystemService } from '../../../service/system.service';
 })
 export class PurchaseRequestLinesComponent implements OnInit {
 
-	title: string = "PurchaseRequestLineItem List";
+	  title: string = "PurchaseRequestLineItem List";
   	prLineItems: PurchaseRequestLineItem[] = [];
   	prliId: string = '0';
+    request: PurchaseRequest;
   	id: string;
 
   constructor(private prliSvc: PurchaseRequestLineItemService,
@@ -28,6 +29,10 @@ export class PurchaseRequestLinesComponent implements OnInit {
   		.subscribe(parms => {
   			// Retrieve ID# for chosen purchase request
   			let id = parms["id"];
+        this.prSvc.get(id)
+          .subscribe(purchaserequests => {
+            this.request = purchaserequests.length > 0 ? purchaserequests[0] : null;
+          });
   			console.log('Getting list of prlis...');
     		this.prliSvc.listByPR(id).subscribe(prlis => {
       			this.prLineItems = prlis;

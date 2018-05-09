@@ -35,6 +35,7 @@ import { PurchaseRequestLinesComponent } from './feature/purchaserequest/purchas
 import { PurchaseRequestLineItemCreateComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-create/purchaserequestlineitem-create.component';
 import { PurchaseRequestLineItemEditComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-edit/purchaserequestlineitem-edit.component';
 import { PurchaseRequestLineItemService } from './service/purchaserequestlineitem.service';
+import { SortPipe } from '../app/pipe/sort.pipe';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { PurchaseRequestLineItemService } from './service/purchaserequestlineite
     PurchaseRequestDetailComponent,
     PurchaseRequestLinesComponent,
     PurchaseRequestLineItemCreateComponent,
-    PurchaseRequestLineItemEditComponent
+    PurchaseRequestLineItemEditComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,

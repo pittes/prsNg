@@ -4,6 +4,7 @@ import { PurchaseRequestService } from '../../../service/purchaserequest.service
 import { User } from '../../../model/user';
 import { UserService } from '../../../service/user.service';
 import { SystemService } from '../../../service/system.service';
+import { SortPipe } from '../../../pipe/sort.pipe';
 
 @Component({
   selector: 'app-purchaserequest-list',
@@ -14,6 +15,7 @@ export class PurchaseRequestListComponent implements OnInit {
 
 	title: string = "PurchaseRequest List";
   requests: PurchaseRequest[] = [];
+  sortBy: string = "Id";
 	
   // mock login...this will be replaced once login component complete
   user: User;
@@ -26,6 +28,7 @@ export class PurchaseRequestListComponent implements OnInit {
     console.log('Getting list of prs...');
     this.prSvc.list().subscribe(prs => {
       this.requests = prs;
+      this.populateUserName();
       console.log(prs);
     });
     // mock login - hardcoded for now for testing purposes
@@ -39,6 +42,16 @@ export class PurchaseRequestListComponent implements OnInit {
             
         }
     });
+  }
+
+  populateUserName(): void {
+    for (let pr of this.requests) {
+      pr.UserName = pr.User.UserName;
+    }
+  }
+
+  setSortBy(column: string): void {
+    this.sortBy = column;
   }
 
 }

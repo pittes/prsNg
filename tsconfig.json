@@ -6,6 +6,7 @@
       "@core/*" : ["app/core/*"],
       "@feature/*" : ["app/feature/*"],
       "@model/*" : ["app/model/*"],
+      "@pipe/*" : ["app/pipe/*"],
       "@svc/*" : ["app/service/*"],
       "@util/*" : ["app/util/*"]
     },

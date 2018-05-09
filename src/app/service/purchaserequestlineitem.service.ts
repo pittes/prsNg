@@ -26,8 +26,11 @@ export class PurchaseRequestLineItemService {
 		return this.http.get(url+"Get?id="+id) as Observable <PurchaseRequestLineItem[]>;
 	}
 
-	remove(id): Observable <any> {
-		return this.http.get(url+"Remove?id="+id) as Observable <any>;
+	remove(id): Observable<any> {
+      console.log("prlisvc.remove... id = "+id);
+      let urlStr: string = url+"Remove?id="+id;
+      console.log("url str = "+urlStr);
+      return this.http.get(urlStr) as Observable<any>;
 	}
 
 	change(prLineItem: PurchaseRequestLineItem): Observable <any> {
