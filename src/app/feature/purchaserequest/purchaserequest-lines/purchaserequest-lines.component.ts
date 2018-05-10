@@ -25,27 +25,31 @@ export class PurchaseRequestLinesComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-  	this.route.params
-  		.subscribe(parms => {
-  			// Retrieve ID# for chosen purchase request
-  			let id = parms["id"];
-        this.prSvc.get(id)
-          .subscribe(purchaserequests => {
-            this.request = purchaserequests.length > 0 ? purchaserequests[0] : null;
-          });
-  			console.log('Getting list of prlis...');
-    		this.prliSvc.listByPR(id).subscribe(prlis => {
-      			this.prLineItems = prlis;
-      			console.log(prlis);
-  			});
-  		});
+    this.route.params.subscribe(parms => this.id = parms['id']);
+    this.route.params.subscribe(parms => this.prliId = parms['del']);
+    console.log("this.id=", this.id);
+    console.log("prliId=", this.prliId);  
+    this.prSvc.get(this.id)
+      .subscribe(purchaserequests => {
+        this.request = purchaserequests.length > 0 ? purchaserequests[0] : null;
+        console.log("request = ", this.request);
+      }
+    );
+    // if 'del' param is present, delete the prli by the id passed into 'del' param
+    if (this.prliId!='0' && this.prliId!=null) {
+      this.remove();
+    }
+    
+    this.prliSvc.listByPR(this.id)
+      .subscribe(prlis => {
+        this.prLineItems = prlis;
+      });
   }
 
   remove(): void {
     this.prliSvc.remove(this.prliId)
       .subscribe(res => {
-        console.log(res);
         this.router.navigateByUrl("/purchaserequest/lines/"+this.id);
       });
-}
+  }
 }

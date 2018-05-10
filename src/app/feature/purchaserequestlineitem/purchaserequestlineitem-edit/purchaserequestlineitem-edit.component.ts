@@ -14,9 +14,10 @@ import { PurchaseRequestLineItemService } from '../../../service/purchaserequest
 })
 export class PurchaseRequestLineItemEditComponent implements OnInit {
 
-	title: string = "PurchaseRequestLineItem Create";
+	title: string = "PurchaseRequestLineItem Edit";
 	resp: any;
 	prID: number;
+	prliID: number;
 
 	request: PurchaseRequest;
 	product: Product;
@@ -24,9 +25,38 @@ export class PurchaseRequestLineItemEditComponent implements OnInit {
 	
 	products: Product[];
 
-  constructor() { }
+
+  constructor(private prodSvc: ProductService,
+  				private prliSvc: PurchaseRequestLineItemService,
+  				private router: Router,
+  				private route: ActivatedRoute) { }
 
   ngOnInit() {
+  	this.route.params.subscribe(parms => {
+  		this.prliID = parms["id"];
+  		this.prliSvc.get(this.prliID)
+  			.subscribe(prli => {
+  					this.lineItem = prli.length > 0 ? prli[0] : null;
+  					this.request = this.lineItem.PurchaseRequest;
+  					console.log(this.lineItem);
+  		});
+  	});
+  	this.prodSvc.list()
+  		.subscribe(productList => this.products = productList);
   }
 
+  change() {
+	  	console.log(this.lineItem);
+	  	this.prID = this.request.Id;
+	  	this.prliSvc.change(this.lineItem)
+	  		.subscribe(resp => {
+	  			this.resp = resp;
+	  			console.log("PRLI-Change:", this.resp);
+	  			this.router.navigate(['/purchaserequest/lines/'+this.prID]);
+	  		});
+  	}
+
+  	compareFn(pid1: number, pid2: number): boolean {
+  		return pid1 === pid2;
+  	}
 }

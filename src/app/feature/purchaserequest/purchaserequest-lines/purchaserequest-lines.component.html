@@ -33,19 +33,18 @@
 		<td>Id</td>
 		<td>PR ID</td>
 		<td>Product</td>
+		<td>Price</td>
 		<td>Quantity</td>
 		<td>Action</td>
 	</tr>
 	<tbody *ngIf="prLineItems">
 	<tr *ngFor="let prli of prLineItems">
-		<td>{{ prli.Id }}</td><td>{{ prli.PurchaseRequest.Id }}</td><td>{{ prli.Product.Name }}</td><td>{{ prli.Quantity }}</td>
+		<td>{{ prli.Id }}</td><td class="nbr">{{ prli.PurchaseRequest.Id }}</td><td>{{ prli.Product.Name }}</td><td>{{ prli.Product.Price | currency }}</td><td class="nbr">{{ prli.Quantity }}</td>
 		<td class="actions">
-			<a routerLink='/purchaserequestlineitem/detail/{{prli.Id}}'>
-			<img src="assets/details.png" width="20" height="20" title="Detail"></a>
 			<a routerLink='/purchaserequestlineitem/edit/{{prli.Id}}'>
 			<img src="assets/pencil-icon.png" width="20" height="20" title="Edit"></a>
 			<!-- Need to fix this delete link -->
-			<a (click)="remove()" routerLink='/purchaserequestlineitem/del/{{prli.Id}}'>
+			<a (click)="remove()" routerLink='/purchaserequest/linedel/{{request.Id}}/{{prli.Id}}'>
 			<img src='assets/delete-x.png' width='20' height='20' title='Remove'></a>
 			<!-- <button (click)="remove()"></button> -->
 			<!-- <input type="image" src="assets/delete-x.png" alt="Delete" width="20" height="20"> -->

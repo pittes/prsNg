@@ -45,7 +45,7 @@ export class PurchaseRequestLineItemCreateComponent implements OnInit {
 
   ngOnInit() {
   	this.route.params.subscribe(parms => {
-  		this.prID =parms["id"];
+  		this.prID = parms["id"];
   		this.prSvc.get(this.prID)
   			.subscribe(prs => {
   					this.request = prs.length > 0 ? prs[0] : null;
