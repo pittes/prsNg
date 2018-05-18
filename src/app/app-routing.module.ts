@@ -18,6 +18,8 @@ import { PurchaseRequestListComponent } from './feature/purchaserequest/purchase
 import { PurchaseRequestCreateComponent } from './feature/purchaserequest/purchaserequest-create/purchaserequest-create.component';
 import { PurchaseRequestEditComponent } from './feature/purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
 import { PurchaseRequestDetailComponent } from './feature/purchaserequest/purchaserequest-detail/purchaserequest-detail.component';
+import { PurchaseRequestReviewComponent } from './feature/purchaserequest/purchaserequest-review/purchaserequest-review.component';
+import { PurchaseRequestApproveComponent } from './feature/purchaserequest/purchaserequest-approve/purchaserequest-approve.component';
 import { PurchaseRequestLinesComponent } from './feature/purchaserequest/purchaserequest-lines/purchaserequest-lines.component';
 import { PurchaseRequestLineItemCreateComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-create/purchaserequestlineitem-create.component';
 import { PurchaseRequestLineItemEditComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-edit/purchaserequestlineitem-edit.component';
@@ -47,6 +49,8 @@ const routes: Routes = [
 	{path: 'purchaserequest/detail/:id', component: PurchaseRequestDetailComponent},
 	{path: 'purchaserequest/remove/:id', component: PurchaseRequestDetailComponent},
 	{path: 'purchaserequest/edit/:id', component: PurchaseRequestEditComponent},
+	{path: 'purchaserequest/review', component: PurchaseRequestReviewComponent},
+	{path: 'purchaserequest/approve/:id', component: PurchaseRequestApproveComponent},
 	{path: 'purchaserequest/lines/:id', component: PurchaseRequestLinesComponent},
 	{path: 'purchaserequest/linedel/:id/:del', component: PurchaseRequestLinesComponent},
 	{path: 'purchaserequestlineitem/create/:id', component: PurchaseRequestLineItemCreateComponent},

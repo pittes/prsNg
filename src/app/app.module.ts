@@ -30,12 +30,16 @@ import { PurchaseRequestListComponent } from './feature/purchaserequest/purchase
 import { PurchaseRequestCreateComponent } from './feature/purchaserequest/purchaserequest-create/purchaserequest-create.component';
 import { PurchaseRequestEditComponent } from './feature/purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
 import { PurchaseRequestDetailComponent } from './feature/purchaserequest/purchaserequest-detail/purchaserequest-detail.component';
+import { PurchaseRequestReviewComponent } from './feature/purchaserequest/purchaserequest-review/purchaserequest-review.component';
+import { PurchaseRequestApproveComponent } from './feature/purchaserequest/purchaserequest-approve/purchaserequest-approve.component';
 import { SystemService } from './service/system.service';
 import { PurchaseRequestLinesComponent } from './feature/purchaserequest/purchaserequest-lines/purchaserequest-lines.component';
 import { PurchaseRequestLineItemCreateComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-create/purchaserequestlineitem-create.component';
 import { PurchaseRequestLineItemEditComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-edit/purchaserequestlineitem-edit.component';
 import { PurchaseRequestLineItemService } from './service/purchaserequestlineitem.service';
 import { SortPipe } from '../app/pipe/sort.pipe';
+
+
 
 
 @NgModule({
@@ -61,6 +65,8 @@ import { SortPipe } from '../app/pipe/sort.pipe';
     PurchaseRequestCreateComponent,
     PurchaseRequestEditComponent,
     PurchaseRequestDetailComponent,
+    PurchaseRequestReviewComponent,
+    PurchaseRequestApproveComponent,
     PurchaseRequestLinesComponent,
     PurchaseRequestLineItemCreateComponent,
     PurchaseRequestLineItemEditComponent,

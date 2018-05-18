@@ -7,42 +7,41 @@ import { SystemService } from '../../../service/system.service';
 import { SortPipe } from '../../../pipe/sort.pipe';
 
 @Component({
-  selector: 'app-purchaserequest-list',
-  templateUrl: './purchaserequest-list.component.html',
-  styleUrls: ['./purchaserequest-list.component.css']
+  selector: 'app-purchaserequest-review',
+  templateUrl: './purchaserequest-review.component.html',
+  styleUrls: ['./purchaserequest-review.component.css']
 })
-export class PurchaseRequestListComponent implements OnInit {
+export class PurchaseRequestReviewComponent implements OnInit {
 
-	title: string = "PurchaseRequest List";
+	title: string = "PurchaseRequest Review";
   requests: PurchaseRequest[] = [];
   sortBy: string = "Id";
-	
-  // mock login...this will be replaced once login component complete
-  user: User;
+  authenticatedUser: User;
 
   constructor(private prSvc: PurchaseRequestService,
               private userSvc: UserService,
               private sysSvc: SystemService) { }
 
   ngOnInit() {
-    console.log('Getting list of prs...');
-    this.prSvc.list().subscribe(prs => {
-      this.requests = prs;
-      this.populateUserName();
-      console.log(prs);
-    });
-    // mock login - hardcoded for now for testing purposes
+  	this.authenticatedUser = this.sysSvc.data.user.instance;
+  	console.log("Getting list for review");
+  	this.prSvc.listForReview(this.authenticatedUser.Id)
+  		.subscribe(prs => {
+  			this.requests = prs;
+  			this.populateUserName();
+  		});
+  	// mock login - hardcoded for now for testing purposes
     this.userSvc.login("ttim", "godblessus")
       .subscribe(users => {
         if(users.length > 0) {
-            this.user = users[0];
-            this.sysSvc.data.user.instance = this.user;
+            this.authenticatedUser = users[0];
+            this.sysSvc.data.user.instance = this.authenticatedUser;
             this.sysSvc.data.user.loggedIn = true;
             console.log("SysSvc:", this.sysSvc.debug);
             
         }
       });
-    }
+  }
 
   populateUserName(): void {
     for (let pr of this.requests) {

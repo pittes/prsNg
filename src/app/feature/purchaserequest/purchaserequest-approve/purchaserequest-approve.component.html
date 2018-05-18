@@ -2,7 +2,7 @@
 <div class="component-content">
 	<div class="lefthalf">
 		<span class="component-title">[{{ title }}]</span>
-		<span><a routerLink='/purchaserequest/list'>Back to list</a></span>
+		<span><a routerLink='/purchaserequest/review'>Back to list</a></span>
 	</div>	
 </div>
 <p *ngIf="!request">Loading...</p>
@@ -36,7 +36,6 @@
 			<td>Product</td>
 			<td>Price</td>
 			<td>Quantity</td>
-			<td>Action</td>
 		</tr>
 		<tr *ngIf="prLineItems.length == 0" class="table-danger">
 			<td colspan=6>No line items yet. Please create a new one!</td>
@@ -44,17 +43,18 @@
 		<tbody *ngIf="prLineItems">
 		<tr *ngFor="let prli of prLineItems">
 			<td>{{ prli.Id }}</td><td class="nbr">{{ prli.PurchaseRequest.Id }}</td><td>{{ prli.Product.Name }}</td><td>{{ prli.Product.Price | currency }}</td><td class="nbr">{{ prli.Quantity }}</td>
-			<td class="actions">
-				<a routerLink='/purchaserequestlineitem/edit/{{prli.Id}}'>
-				<img src="assets/pencil-icon.png" width="20" height="20" title="Edit"></a>
-				<a (click)="remove()" routerLink='/purchaserequest/linedel/{{request.Id}}/{{prli.Id}}'>
-				<img src='assets/delete-x.png' width='20' height='20' title='Remove'></a>
-			</td>
 		</tr>
 		</tbody>
 	</table>
 <p><br></p>
 <div class="component-content" *ngIf='prLineItems && prLineItems.length > 0'>
-	<button (click)='submitForReview()' class='btn btn-primary'>Submit For Review</button>
-</div>
+	<div class="col-md-1 mb-3">
+		<button (click)='approve()' class='btn btn-primary'>Approve</button>
+	</div>
+	<div class="col-md-1 mb-3">
+		<button (click)='reject()' class='btn btn-danger' *ngIf="reasonForRejection.length > 0">Reject</button>
+	</div>
+	<div class="col-md-6 mb-3">
+		<input [(ngModel)]='reasonForRejection' name='ReasonForRejection' type="text" class="form-control col-sm-6" id="reasonForRejection" placeholder="Reason for Rejection">
+	</div>
 </div>

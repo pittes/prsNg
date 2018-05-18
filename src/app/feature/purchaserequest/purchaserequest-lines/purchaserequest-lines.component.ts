@@ -18,6 +18,7 @@ export class PurchaseRequestLinesComponent implements OnInit {
   	prliId: string = '0';
     request: PurchaseRequest;
   	id: string;
+    resp: any;
 
   constructor(private prliSvc: PurchaseRequestLineItemService,
               private prSvc: PurchaseRequestService,
@@ -52,4 +53,13 @@ export class PurchaseRequestLinesComponent implements OnInit {
         this.router.navigateByUrl("/purchaserequest/lines/"+this.id);
       });
   }
+
+  submitForReview(): void {
+    this.prSvc.submitForReview(this.request)
+      .subscribe(resp => {
+        this.resp = resp;
+        this.router.navigate(['/purchaserequest/list']);
+      });
+
+}
 }

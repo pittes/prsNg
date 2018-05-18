@@ -12,6 +12,10 @@ export class PurchaseRequestService {
 		return this.http.get(url+"List") as Observable <PurchaseRequest[]>;
 	}
 
+	listForReview(id): Observable <PurchaseRequest[]> {
+		return this.http.get(url+"ListReview?id="+id) as Observable <PurchaseRequest[]>;
+	}
+
 	create(purchaseRequest: PurchaseRequest): Observable <any> {
 		console.log("purchaserequestsvc.create...");
 		return this.http.post(url+"Add", purchaseRequest) as Observable <any>;
@@ -31,6 +35,14 @@ export class PurchaseRequestService {
 
 	submitForReview(purchaseRequest: PurchaseRequest): Observable<any> {
         return this.http.post(url+"SubmitForReview", purchaseRequest) as Observable<any>;
+	}
+
+	approve(purchaseRequest: PurchaseRequest): Observable<any> {
+      return this.http.post(url+"ApprovePR", purchaseRequest) as Observable<any>;
+  	}
+  
+  	reject(purchaseRequest: PurchaseRequest): Observable<any> {
+      return this.http.post(url+"RejectPR", purchaseRequest) as Observable<any>;
 	}
 
   constructor(private http: HttpClient) { }
